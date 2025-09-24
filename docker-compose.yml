@@ -1,0 +1,23 @@
+
+services:
+  db:
+    image: mysql:9
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=aviar
+    ports:
+      - 3306:3306
+    volumes:
+      - ./aviar.sql:/tmp/aviar.sql
+  aviar:
+    build: .
+    environment:
+      - jwt_secret_key=f9612ee6cbd06827ff8e43b5cd1fd7ab888b420c71b9ee8f20f96205b35aac6b6984a6bb66d0cae7194a2ac434a68952d4f2ce4ba06ab9ad77ac416ae43545ec
+      - DB_URL=jdbc:mysql://db:3306/aviar
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8080:8080
