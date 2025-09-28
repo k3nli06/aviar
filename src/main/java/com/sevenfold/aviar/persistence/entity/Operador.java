@@ -28,7 +28,7 @@ public class Operador {
     @Column(length = 50, unique = true)
     private String ruc;
     @Column(length = 50)
-    private String telefomno;
+    private String telefono;
     @Column(length = 150)
     private String correo;
     @Column(name = "sitio_web")
@@ -50,7 +50,7 @@ public class Operador {
     
     public Operador() {}
 
-    public Operador(long id, Usuario usuario, String razonSocial, String nombreComercial, String ruc, String telefomno,
+    public Operador(long id, Usuario usuario, String razonSocial, String nombreComercial, String ruc, String telefono,
             String correo, String sitioWeb, Pais pais, Ciudad ciudad, BigDecimal calificacionProm, int totalResenas,
             boolean certificado) {
         this.id = id;
@@ -58,7 +58,7 @@ public class Operador {
         this.razonSocial = razonSocial;
         this.nombreComercial = nombreComercial;
         this.ruc = ruc;
-        this.telefomno = telefomno;
+        this.telefono = telefono;
         this.correo = correo;
         this.sitioWeb = sitioWeb;
         this.pais = pais;
@@ -108,12 +108,12 @@ public class Operador {
         this.ruc = ruc;
     }
 
-    public String getTelefomno() {
-        return telefomno;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setTelefomno(String telefomno) {
-        this.telefomno = telefomno;
+    public void setTelefomno(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getCorreo() {

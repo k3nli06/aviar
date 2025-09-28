@@ -66,7 +66,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             response.getWriter().write("El token es invalido");
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            response.getWriter().write("Error inesperado de authenticacion");
+            response.getWriter().write("Error inesperado");
         }
 
     }

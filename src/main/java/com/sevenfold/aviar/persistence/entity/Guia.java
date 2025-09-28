@@ -28,12 +28,12 @@ public class Guia {
     private BigDecimal calificacionProm;
     @Column(name = "total_resenas")
     private int totalResenas;
-    private boolean certificacion;
+    private boolean certificado;
     
     public Guia() {}
 
     public Guia(Long id, Usuario usuario, Operador operador, String biografia, int anosExp, BigDecimal calificacionProm,
-            int totalResenas, boolean certificacion) {
+            int totalResenas) {
         this.id = id;
         this.usuario = usuario;
         this.operador = operador;
@@ -41,7 +41,6 @@ public class Guia {
         this.anosExp = anosExp;
         this.calificacionProm = calificacionProm;
         this.totalResenas = totalResenas;
-        this.certificacion = certificacion;
     }
 
     public Long getId() {
@@ -100,12 +99,12 @@ public class Guia {
         this.totalResenas = totalResenas;
     }
 
-    public boolean isCertificacion() {
-        return certificacion;
+    public boolean isCertificado() {
+        return certificado;
     }
 
-    public void setCertificacion(boolean certificacion) {
-        this.certificacion = certificacion;
+    public void setCertificacion(boolean certificado) {
+        this.certificado = certificado;
     }
 
 }

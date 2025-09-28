@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CurrentTimestamp;
+import org.hibernate.generator.EventType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -46,7 +47,7 @@ public class Reserva {
     @OneToOne(mappedBy = "reserva")
     private DetalleReserva detalleReserva;
     @Column(name = "creado_en")
-    @CurrentTimestamp
+    @CurrentTimestamp(event = EventType.INSERT)
     private LocalDateTime creadoEn;
     
     public Reserva() {}
@@ -93,7 +94,7 @@ public class Reserva {
         return guia;
     }
 
-    public void setOperador(Guia guia) {
+    public void setGuia(Guia guia) {
         this.guia = guia;
     }
 

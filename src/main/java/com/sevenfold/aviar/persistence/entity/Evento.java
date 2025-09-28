@@ -29,9 +29,9 @@ public class Evento {
     @Column(length = 200, nullable = false)
     private String titulo;
     private String descripcion;
-    @Column(name = "felcha_inicio", nullable = false)
+    @Column(name = "fecha_inicio", nullable = false)
     private LocalDateTime fechaInicio;
-    @Column(name = "felcha_fin", nullable = false)
+    @Column(name = "fecha_fin", nullable = false)
     private LocalDateTime fechaFin;
     @Column(precision = 12, scale = 2)
     private BigDecimal precio;
