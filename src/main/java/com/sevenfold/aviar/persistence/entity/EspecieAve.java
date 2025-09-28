@@ -1,7 +1,9 @@
 package com.sevenfold.aviar.persistence.entity;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity(name = "especie_ave")
 public class EspecieAve {
@@ -40,6 +43,8 @@ public class EspecieAve {
     private String descripcionEs;
     @Column(name = "descripcion_en")
     private String descripcionEn;
+    @OneToMany(mappedBy = "ave", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Foto> fotos; 
     
     public EspecieAve() {}
 
@@ -172,6 +177,14 @@ public class EspecieAve {
 
     public void setDescripcionEn(String descripcionEn) {
         this.descripcionEn = descripcionEn;
+    }
+
+    public List<Foto> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<Foto> fotos) {
+        this.fotos = fotos;
     }
     
 }

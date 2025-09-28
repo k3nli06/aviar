@@ -42,7 +42,7 @@ public class Usuario implements UserDetails {
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
     private String telefono;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "pais_id")
     private Pais pais;
     @Column(name = "creado_en")
@@ -56,15 +56,13 @@ public class Usuario implements UserDetails {
     public Usuario() {
     }
 
-    public Usuario(Long id, String correo, String claveHash, String nombreCompleto, String telefono,
-            Pais pais) {
+    public Usuario(Long id, String correo, String claveHash, String nombreCompleto, String telefono) {
         this.id = id;
         this.correo = correo;
         this.claveHash = claveHash;
         this.nombreCompleto = nombreCompleto;
         this.roles = new HashSet<>();
         this.telefono = telefono;
-        this.pais = pais;
         this.activo = true;
     }
 

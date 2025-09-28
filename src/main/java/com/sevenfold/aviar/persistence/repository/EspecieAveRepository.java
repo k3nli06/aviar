@@ -11,8 +11,7 @@ import com.sevenfold.aviar.persistence.entity.EspecieAve;
 @Repository
 public interface EspecieAveRepository extends JpaRepository<EspecieAve, Long> {
     Optional<EspecieAve> findByNombreCientifico(String nombreCientifico);
-    Optional<EspecieAve> findByNombreComunEs(String nombreComunEs);
-    Optional<EspecieAve> findByNombreComunEn(String nombreComunEn);
+    Optional<EspecieAve> findByNombreComunEsOrNombreComunEn(String nombreComunEs, String nombreComunEn);
     List<EspecieAve> findAllByOrden(String orden);
     List<EspecieAve> findAllByFamilia(String familia);
     List<EspecieAve> findAllByGenero(String genero);
