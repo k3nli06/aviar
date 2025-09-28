@@ -145,6 +145,14 @@ CREATE TABLE especie_ave (
   FOREIGN KEY (estado_conservacion_id) REFERENCES estado_conservacion(id) ON DELETE SET NULL
 );
 
+CREATE TABLE foto (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  imagen LONGBLOB NOT NULL,   
+  tipo VARCHAR(50), 
+  ave_id BIGINT NOT NULL,
+  FOREIGN KEY (ave_id) REFERENCES especie_ave(id) ON DELETE CASCADE
+);
+
 CREATE TABLE distribucion_ave (
   especie_id BIGINT NOT NULL,
   area_id BIGINT NOT NULL,
@@ -174,7 +182,7 @@ CREATE TABLE evento (
 CREATE TABLE reserva (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
   usuario_id BIGINT NOT NULL,
-  operador_id BIGINT,
+  guia_id BIGINT,
   area_id BIGINT,
   estado VARCHAR(20) DEFAULT 'pendiente',
   fecha_inicio DATETIME NOT NULL,
@@ -186,7 +194,7 @@ CREATE TABLE reserva (
   moneda_codigo VARCHAR(3),
   creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE,
-  FOREIGN KEY (operador_id) REFERENCES operador(id) ON DELETE SET NULL,
+  FOREIGN KEY (guia_id) REFERENCES guia(id) ON DELETE SET NULL,
   FOREIGN KEY (area_id) REFERENCES area_protegida(id) ON DELETE SET NULL,
   FOREIGN KEY (moneda_codigo) REFERENCES moneda(codigo) ON DELETE SET NULL
 );

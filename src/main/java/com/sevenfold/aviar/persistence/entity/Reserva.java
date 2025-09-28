@@ -24,8 +24,8 @@ public class Reserva {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     @ManyToOne
-    @JoinColumn(name = "operador_id")
-    private Operador operador;
+    @JoinColumn(name = "guia_id")
+    private Guia guia;
     @ManyToOne
     @JoinColumn(name = "area_id", foreignKey = @ForeignKey(foreignKeyDefinition = "area_protegida_id"))
     private AreaProtegida area;
@@ -53,12 +53,12 @@ public class Reserva {
 
     
 
-    public Reserva(Long id, Usuario usuario, Operador operador, AreaProtegida area, String estado,
+    public Reserva(Long id, Usuario usuario, Guia guia, AreaProtegida area, String estado,
             LocalDateTime fechaInicio, LocalDateTime fechaFin, int adultos, int ninos, String notas, BigDecimal total,
             Moneda moneda, DetalleReserva detalleReserva) {
         this.id = id;
         this.usuario = usuario;
-        this.operador = operador;
+        this.guia = guia;
         this.area = area;
         this.estado = estado;
         this.fechaInicio = fechaInicio;
@@ -89,12 +89,12 @@ public class Reserva {
         this.usuario = usuario;
     }
 
-    public Operador getOperador() {
-        return operador;
+    public Guia getGuia() {
+        return guia;
     }
 
-    public void setOperador(Operador operador) {
-        this.operador = operador;
+    public void setOperador(Guia guia) {
+        this.guia = guia;
     }
 
     public AreaProtegida getArea() {
