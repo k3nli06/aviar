@@ -50,8 +50,9 @@ Compila la app y la sirve con Nginx en http://localhost:80
 
 ## Ejecucion
 
-En la carpeta raiz del proyecto escribe el comando a continuacion
+En la carpeta raiz del proyecto escribe los comando a continuacion
 ```
+.\mvnw clean package
 docker compose up
 ```
 esto levantara la base de datos junto con el backend (el frontend estara comentado dado que no es funcional con el backend)
