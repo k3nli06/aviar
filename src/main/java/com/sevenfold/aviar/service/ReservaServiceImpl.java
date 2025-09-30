@@ -55,7 +55,7 @@ public class ReservaServiceImpl implements ReservaService {
                         "pendiente",
                         reserva.fechaInicio(), reserva.fechaFin(), reserva.adultos(), reserva.ninos(), reserva.notas(),
                         null,
-                        null, null));
+                        null));
         ReservaDto dto = new ReservaDto(reservado.getId(), reservado.getGuia(), reservado.getArea().getId(),
                 reservado.getEstado(), reservado.getFechaInicio(), reservado.getFechaFin(), reservado.getAdultos(),
                 reservado.getNinos(), reservado.getNotas(), reservado.getTotal(), reservado.getMoneda());

@@ -27,9 +27,9 @@ public class FotoController {
     FotoService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getFoto(@PathVariable Long Id) {
+    public ResponseEntity<?> getFoto(@PathVariable Long id) {
         
-        Foto foto = service.ObtenerFoto(Id);
+        Foto foto = service.ObtenerFoto(id);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, foto.getTipo())

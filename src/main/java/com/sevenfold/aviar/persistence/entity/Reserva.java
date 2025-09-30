@@ -2,6 +2,7 @@ package com.sevenfold.aviar.persistence.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.annotations.CurrentTimestamp;
 import org.hibernate.generator.EventType;
@@ -14,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -44,8 +46,8 @@ public class Reserva {
     @ManyToOne
     @JoinColumn(name = "moneda_codigo")
     private Moneda moneda;
-    @OneToOne(mappedBy = "reserva")
-    private DetalleReserva detalleReserva;
+    @OneToMany(mappedBy = "reserva")
+    private List<DetalleReserva> detalleReserva;
     @Column(name = "creado_en")
     @CurrentTimestamp(event = EventType.INSERT)
     private LocalDateTime creadoEn;
@@ -56,7 +58,7 @@ public class Reserva {
 
     public Reserva(Long id, Usuario usuario, Guia guia, AreaProtegida area, String estado,
             LocalDateTime fechaInicio, LocalDateTime fechaFin, int adultos, int ninos, String notas, BigDecimal total,
-            Moneda moneda, DetalleReserva detalleReserva) {
+            Moneda moneda) {
         this.id = id;
         this.usuario = usuario;
         this.guia = guia;
@@ -69,7 +71,6 @@ public class Reserva {
         this.notas = notas;
         this.total = total;
         this.moneda = moneda;
-        this.detalleReserva = detalleReserva;
     }
 
 
@@ -180,13 +181,11 @@ public class Reserva {
 
 
 
-    public DetalleReserva getDetalleReserva() {
+    public List<DetalleReserva> getDetalleReserva() {
         return detalleReserva;
     }
 
-
-
-    public void setDetalleReserva(DetalleReserva detalleReserva) {
+    public void setDetalleReserva(List<DetalleReserva> detalleReserva) {
         this.detalleReserva = detalleReserva;
     }
 
