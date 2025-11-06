@@ -38,7 +38,7 @@ public class FotoController {
     }
     
     @PostMapping("/{aveId}")
-    public ResponseEntity<?> subirfoto(@PathVariable Long aveId, @RequestParam MultipartFile foto) {
+    public ResponseEntity<?> subirfoto(@PathVariable Long aveId, @RequestParam("foto") MultipartFile foto) {
         try {
             if (service.guardarFoto(aveId, foto) == false) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ave no encontrada");

@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sevenfold.aviar.dto.EventoDto;
+import com.sevenfold.aviar.dto.*;
 import com.sevenfold.aviar.persistence.entity.Evento;
 import com.sevenfold.aviar.persistence.repository.EventoRepository;
 
@@ -17,12 +17,11 @@ public class EventoServiceImpl implements EventoService {
     EventoRepository repository;
 
     @Override
-    public List<EventoDto> obtenerEventos() {
+    public List<EventosDto> obtenerEventos() {
         List<Evento> eventos = repository.findAll();
         return eventos.stream().map(
-                ev -> new EventoDto(ev.getId(), ev.getArea().getId(), ev.getOperador(), ev.getTipo(), ev.getTitulo(),
-                        ev.getTitulo(), ev.getFechaInicio(), ev.getFechaFin(), ev.getPrecio(), ev.getMoneda()))
-                .toList();
+            e -> new EventosDto(e.getId(), e.getTitulo(), e.getDescripcion(), e.getFechaInicio(), e.getFechaFin())
+        ).toList();
     }
 
     @Override

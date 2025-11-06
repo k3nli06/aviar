@@ -6,9 +6,6 @@ import { mockGuides } from '../mock/guides';
 const BookingSystem = () => {  
   const [selectedDate, setSelectedDate] = useState('');  
   const [selectedGuide, setSelectedGuide] = useState('');  
-  const [additionalServices, setAdditionalServices] = useState([]);  
-
-  const services = ['Equipo óptico', 'Transporte', 'Almuerzo', 'Fotografía guiada'];  
 
   const handleBooking = () => {  
     if (selectedDate && selectedGuide) {  
@@ -65,40 +62,7 @@ const BookingSystem = () => {
               ))}  
             </select>  
           </motion.div>  
-        </div>  
-
-        <motion.div  
-          initial={{ opacity: 0, y: 20 }}  
-          animate={{ opacity: 1, y: 0 }}  
-          className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-green-200/50 dark:border-gray-700/50 mb-8"  
-        >  
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">  
-            <Plus className="w-5 h-5" /> Servicios Complementarios  
-          </h3>  
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">  
-            {services.map((service, index) => (  
-              <motion.label  
-                key={service}  
-                className="flex items-center gap-2 p-3 bg-gray-50 dark:bg-gray-700 rounded-xl cursor-pointer hover:bg-green-50 dark:hover:bg-green-900/20"  
-                whileHover={{ scale: 1.02 }}  
-              >  
-                <input  
-                  type="checkbox"  
-                  value={service}  
-                  onChange={(e) => {  
-                    if (e.target.checked) {  
-                      setAdditionalServices([...additionalServices, service]);  
-                    } else {  
-                      setAdditionalServices(additionalServices.filter(s => s !== service));  
-                    }  
-                  }}  
-                  className="text-green-500"  
-                />  
-                <span className="text-sm text-gray-700 dark:text-gray-300">{service}</span>  
-              </motion.label>  
-            ))}  
-          </div>  
-        </motion.div>  
+        </div>          
 
         <div className="space-y-4">  
           {mockGuides.map(guide => (  

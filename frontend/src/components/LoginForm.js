@@ -9,23 +9,49 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);  
   const [error, setError] = useState('');  
   const [isLoading, setIsLoading] = useState(false);  
-  const navigate = useNavigate();  
+  const navigate = useNavigate(); 
+  const url = 'http://localhost:8080/api/';
 
-  const handleSubmit = (e) => {  
-    e.preventDefault();  
-    setIsLoading(true);  
-    setError('');  
+  const handleSubmit = async (e) => {  
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
 
-    // Simulación de login: solo permite 'test@test.com' y '1234'  
-    setTimeout(() => {  
-      if (email === 'test@test.com' && password === '1234') {  
-        localStorage.setItem('isLoggedIn', 'true');  
-        navigate('/app');  
-      } else {  
-        setError('¡Ups! Usuario de prueba: test@test.com / 1234');  
-      }  
-      setIsLoading(false);  
-    }, 1000);  
+    const credentials = {'correo': email, claveHash: password};
+
+    try {
+      const response = await fetch(url + 'auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+      });
+
+    if (!response.ok) {
+      throw new Error(response.status)
+    }
+
+    const responseData = await response.json();
+
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('authToken', responseData.token);  
+    navigate(0); 
+    setIsLoading(false);
+    
+    } catch (error) {
+
+      if (error.message === '401') {
+        console.error('Acceso denegado');
+        setError("credenciales incorrectas");    
+      } else {
+        console.error('Error al intentar contactar al servidor:', error.message);
+        setError("Error al intentar contactar al servidor");
+      }
+    
+    } finally {
+      setIsLoading(false);
+    }
   };  
 
   const handleForgotPassword = () => {  

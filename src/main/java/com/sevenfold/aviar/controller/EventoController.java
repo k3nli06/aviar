@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/eventos")
-@PreAuthorize("permitAll()")
+@PreAuthorize("isAuthenticated()")
 public class EventoController {
 
     @Autowired

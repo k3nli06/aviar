@@ -11,13 +11,13 @@ const NavigationMenu = () => {
     { to: '/catalog', label: 'Catálogo de Aves', icon: Image },  
     { to: '/reserves', label: 'Reservas Naturales', icon: MapPin },  
     { to: '/calendar', label: 'Calendario', icon: Calendar },  
-    { to: '/booking', label: 'Reservas Online', icon: Download },  
     { to: '/education', label: 'Educación', icon: BookOpen }  
   ];  
 
   const handleLogout = () => {  
     localStorage.removeItem('isLoggedIn');  
-    navigate('/');  
+    localStorage.removeItem('authToken');  
+    navigate(0);  
   };  
 
   return (  
